@@ -3,31 +3,61 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Name]'s Website</title>
+    <title>Daniel Mateo's Website</title>
     <style>
-      body { font-family: Arial, sans-serif; max-width: 800px;
-             margin: 0 auto; padding: 20px; background: #f5f5f5; }
-      h1   { color: #1F4E79; }
-      h2   { color: #2E75B6; border-bottom: 2px solid #2E75B6; }
-      p    { line-height: 1.6; }
+      /* 1. Define theme colors using CSS variables */
+      :root {
+        --bg-color: #f5f5f5;
+        --text-color: #333333;
+        --h1-color: #1F4E79;
+        --h2-color: #2E75B6;
+        --link-color: #0066cc;
+      }
+
+      /* 2. Automatically switch to dark mode colors based on system settings */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-color: #121212;   /* Deep charcoal gray */
+          --text-color: #e0e0e0; /* Off-white for readability */
+          --h1-color: #5B9BD5;   /* Lighter, higher contrast blues */
+          --h2-color: #418AB3;
+          --link-color: #66b2ff;
+        }
+      }
+
+      /* 3. Apply the variables to your elements */
+      body { 
+        font-family: Arial, sans-serif; 
+        max-width: 800px;
+        margin: 0 auto; 
+        padding: 20px; 
+        background: var(--bg-color); 
+        color: var(--text-color);
+        /* Smooth transitions when swapping colors */
+        transition: background-color 0.3s ease, color 0.3s ease; 
+      }
+      
+      h1 { color: var(--h1-color); }
+      h2 { color: var(--h2-color); border-bottom: 2px solid var(--h2-color); }
+      p  { line-height: 1.6; }
+      a  { color: var(--link-color); }
     </style>
   </head>
   <body>
-    <h1>Hi, I'm [Your Name]!</h1>
+    <h1>Hi, I'm Daniel Mateo!</h1>
  
     <h2>About Me</h2>
-    <p>[Write 2-3 sentences about yourself here.]</p>
+    <p>I like to play games when I am home and hang out with friends in my free time.</p>
  
     <h2>My Interests</h2>
-    <p>[What do you enjoy? List a few things.]</p>
+    <p>I really enjoy spending time with family and friends.</p>
  
     <h2>My Goals for This Course</h2>
-    <p>[What do you want to build or learn?]</p>
+    <p>My goal is to pass this class and increase my knowledge in coding.</p>
  
     <h2>My GitHub</h2>
     <p>Check out my projects: 
-      <a href="https://github.com/[your-username]">[Your Username]</a>
+      <a href="https://github.com/DanielM1092" target="_blank" rel="noopener noreferrer">Danielm1092</a>
     </p>
   </body>
 </html>
-
