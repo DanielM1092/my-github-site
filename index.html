@@ -3,61 +3,165 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Mateo's Website</title>
+    <title>Daniel Mateo's Portfolio</title>
     <style>
-      /* 1. Define theme colors using CSS variables */
+      /* Modern & Bright Color Palette Variables */
       :root {
-        --bg-color: #f5f5f5;
-        --text-color: #333333;
-        --h1-color: #1F4E79;
-        --h2-color: #2E75B6;
-        --link-color: #0066cc;
+        --bg-color: #f8fafc;
+        --card-bg: #ffffff;
+        --text-color: #334155;
+        --text-light: #64748b;
+        --primary-gradient: linear-gradient(135deg, #3b82f6, #06b6d4);
+        --accent-color: #3b82f6;
+        --link-color: #2563eb;
+        --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        --border-color: #e2e8f0;
       }
 
-      /* 2. Automatically switch to dark mode colors based on system settings */
+      /* Automatic Premium Dark Mode Overrides */
       @media (prefers-color-scheme: dark) {
         :root {
-          --bg-color: #121212;   /* Deep charcoal gray */
-          --text-color: #e0e0e0; /* Off-white for readability */
-          --h1-color: #5B9BD5;   /* Lighter, higher contrast blues */
-          --h2-color: #418AB3;
-          --link-color: #66b2ff;
+          --bg-color: #0f172a;
+          --card-bg: #1e293b;
+          --text-color: #f1f5f9;
+          --text-light: #94a3b8;
+          --primary-gradient: linear-gradient(135deg, #60a5fa, #38bdf8);
+          --accent-color: #60a5fa;
+          --link-color: #38bdf8;
+          --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+          --border-color: #334155;
         }
       }
 
-      /* 3. Apply the variables to your elements */
+      /* Base Layout Setup */
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      
       body { 
-        font-family: Arial, sans-serif; 
-        max-width: 800px;
-        margin: 0 auto; 
-        padding: 20px; 
+        font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
         background: var(--bg-color); 
         color: var(--text-color);
-        /* Smooth transitions when swapping colors */
+        line-height: 1.6;
+        padding: 40px 20px;
         transition: background-color 0.3s ease, color 0.3s ease; 
       }
+
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Eye-Catching Header Design */
+      header {
+        text-align: center;
+        padding: 40px 20px;
+        margin-bottom: 30px;
+      }
+
+      h1 { 
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--primary-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        color: var(--text-light);
+        font-size: 1.1rem;
+      }
       
-      h1 { color: var(--h1-color); }
-      h2 { color: var(--h2-color); border-bottom: 2px solid var(--h2-color); }
-      p  { line-height: 1.6; }
-      a  { color: var(--link-color); }
+      /* Clean and Organized Grid Cards */
+      .card-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 24px;
+        border-radius: 16px;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+      }
+
+      /* Typography & Section Styling */
+      h2 { 
+        font-size: 1.25rem;
+        color: var(--accent-color); 
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .card p { 
+        color: var(--text-color); 
+        font-size: 1rem;
+      }
+
+      /* Call-to-Action Link Styling */
+      .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 5px;
+        transition: opacity 0.2s ease;
+      }
+
+      .github-link:hover {
+        text-decoration: underline;
+        opacity: 0.85;
+      }
     </style>
   </head>
   <body>
-    <h1>Hi, I'm Daniel Mateo!</h1>
- 
-    <h2>About Me</h2>
-    <p>I like to play games when I am home and hang out with friends in my free time.</p>
- 
-    <h2>My Interests</h2>
-    <p>I really enjoy spending time with family and friends.</p>
- 
-    <h2>My Goals for This Course</h2>
-    <p>My goal is to pass this class and increase my knowledge in coding.</p>
- 
-    <h2>My GitHub</h2>
-    <p>Check out my projects: 
-      <a href="https://github.com/DanielM1092" target="_blank" rel="noopener noreferrer">Danielm1092</a>
-    </p>
+
+    <div class="container">
+      <header>
+        <h1>Hi, I'm Daniel Mateo!</h1>
+        <p>Welcome to my personal space on the web.</p>
+      </header>
+   
+      <main class="card-grid">
+        <!-- About Me Section -->
+        <section class="card">
+          <h2>👤 About Me</h2>
+          <p>I like to play games when I am home and hang out with friends in my free time.</p>
+        </section>
+     
+        <!-- Interests Section -->
+        <section class="card">
+          <h2>🎯 My Interests</h2>
+          <p>I really enjoy spending time with family and friends.</p>
+        </section>
+     
+        <!-- Goals Section -->
+        <section class="card">
+          <h2>📚 My Goals for This Course</h2>
+          <p>My goal is to pass this class and increase my knowledge in coding.</p>
+        </section>
+     
+        <!-- GitHub Section -->
+        <section class="card">
+          <h2>💻 My GitHub</h2>
+          <p>Check out my active projects and code repositories:</p>
+          <a class="github-link" href="https://github.com/DanielM1092" target="_blank" rel="noopener noreferrer">
+            Danielm1092 &rarr;
+          </a>
+        </section>
+      </main>
+    </div>
+
   </body>
 </html>
