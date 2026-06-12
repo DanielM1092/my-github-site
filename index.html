@@ -292,7 +292,15 @@
       <button class="music-icon-btn" id="playPauseBtn" title="Toggle Lo-Fi Music System">🎵</button>
       <input type="range" class="volume-slider" id="volumeControl" min="0" max="1" step="0.05" value="0.3" title="Adjust Balance">
     </div>
-
+    <script>
+      if (!bgMusic) {
+        bgMusic = new Audio();
+        bgMusic.src = 'jtwayne-ocean-breeze-beat-by-jtwayne-213318.mp3'; // Points to your music.mp3 file
+        bgMusic.loop = true;           // Keeps the song looping forever
+      }
+    bgMusic.play() // Tells your web browser to start streaming the sound
+    bgMusic.volume = this.value; // Adjusts the volume state in real-time
+    </script>
     <div class="container">
       <header>
         <h1>Hi, I'm Daniel Mateo!</h1>
