@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Mateo's Portfolio</title>
+    <title>Daniel Mateo's Premium Portfolio</title>
     <style>
       /* Modern & Bright Color Palette Variables */
       :root {
@@ -14,8 +14,9 @@
         --primary-gradient: linear-gradient(135deg, #3b82f6, #06b6d4);
         --accent-color: #3b82f6;
         --link-color: #2563eb;
-        --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        --card-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
         --border-color: #e2e8f0;
+        --decal-color: rgba(59, 130, 246, 0.04);
       }
 
       /* Automatic Premium Dark Mode Overrides */
@@ -28,8 +29,9 @@
           --primary-gradient: linear-gradient(135deg, #60a5fa, #38bdf8);
           --accent-color: #60a5fa;
           --link-color: #38bdf8;
-          --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
+          --card-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
           --border-color: #334155;
+          --decal-color: rgba(96, 165, 250, 0.03);
         }
       }
 
@@ -41,67 +43,78 @@
         background: var(--bg-color); 
         color: var(--text-color);
         line-height: 1.6;
-        padding: 40px 20px;
+        padding: 60px 20px;
         transition: background-color 0.3s ease, color 0.3s ease; 
         overflow-x: hidden;
+        position: relative;
       }
+
+      /* --- Visual Decals Background Art --- */
+      .decal {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        fill: var(--decal-color);
+        z-index: -1;
+        pointer-events: none;
+        transition: fill 0.3s ease;
+      }
+      .decal-top-left { top: -50px; left: -100px; }
+      .decal-bottom-right { bottom: -50px; right: -100px; transform: rotate(180deg); }
 
       .container {
-        max-width: 700px;
+        max-width: 750px;
         margin: 0 auto;
+        position: relative;
+        z-index: 1;
       }
 
-      /* Keyframes for Smooth Page Entrance */
+      /* Page Entrance Animation */
       @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
-      /* Eye-Catching Header Design */
+      /* Header Styling */
       header {
         text-align: center;
-        padding: 40px 20px;
-        margin-bottom: 30px;
-        animation: fadeInUp 0.8s ease out forwards;
+        padding: 20px 20px 40px 20px;
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
       h1 { 
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 800;
         background: var(--primary-gradient);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 10px;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
       }
 
       header p {
         color: var(--text-light);
-        font-size: 1.1rem;
+        font-size: 1.25rem;
+        font-weight: 500;
       }
       
-      /* Clean and Organized Grid Cards */
+      /* Card Layout Grid */
       .card-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 28px;
       }
 
-      /* Cards entrance fade staggered using animation delays */
+      /* Card Styling with Staggered Delays */
       .card {
         background: var(--card-bg);
         border: 1px solid var(--border-color);
-        padding: 24px;
-        border-radius: 16px;
+        padding: 32px;
+        border-radius: 24px;
         box-shadow: var(--card-shadow);
         opacity: 0;
-        animation: fadeInUp 0.6s ease-out forwards;
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.3s ease;
       }
 
       .card:nth-child(1) { animation-delay: 0.1s; }
@@ -110,85 +123,100 @@
       .card:nth-child(4) { animation-delay: 0.4s; }
       .card:nth-child(5) { animation-delay: 0.5s; }
 
-      /* Pop up animation on hover */
+      /* Louder Hover / Lift Animations */
       .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 30px 40px -15px rgb(0 0 0 / 0.12), 0 12px 16px -8px rgb(0 0 0 / 0.12);
+        border-color: var(--accent-color);
       }
 
-      /* Typography & Section Styling */
       h2 { 
-        font-size: 1.25rem;
+        font-size: 1.4rem;
         color: var(--accent-color); 
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
 
       .card p { 
         color: var(--text-color); 
-        font-size: 1rem;
+        font-size: 1.05rem;
       }
 
-      /* Animated Button / Link Styling */
+      /* Big & Punchy Button Component */
       .project-link {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         background: var(--primary-gradient);
         color: white;
         text-decoration: none;
-        font-weight: 600;
-        margin-top: 12px;
-        padding: 10px 20px;
-        border-radius: 30px;
-        box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-        transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+        font-weight: 700;
+        margin-top: 18px;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-size: 1.05rem;
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.35);
+        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, filter 0.2s ease;
         position: relative;
         overflow: hidden;
         cursor: pointer;
       }
 
-      /* Micro-interactions on Hover */
+      /* Louder Interactive States */
       .project-link:hover {
-        filter: brightness(1.1);
-        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
-        transform: scale(1.03);
+        filter: brightness(1.15);
+        box-shadow: 0 12px 24px rgba(59, 130, 246, 0.45);
+        transform: scale(1.06);
       }
 
-      /* Shrink down slightly on active click */
+      /* High Intensity Click Scale State */
       .project-link:active {
-        transform: scale(0.97);
+        transform: scale(0.92);
       }
 
       .project-link span {
-        transition: transform 0.2s ease;
+        transition: transform 0.3s ease;
       }
 
       .project-link:hover span {
-        transform: translateX(4px);
+        transform: translateX(6px);
       }
 
-      /* Ripple Effect Style */
+      /* Max Intensity Visual Ripple Feedback */
       .ripple {
         position: absolute;
-        background: rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.6);
         border-radius: 50%;
         transform: scale(0);
-        animation: rippleEffect 0.5s ease-out;
+        animation: rippleEffect 0.6s cubic-bezier(0.1, 0.8, 0.3, 1);
         pointer-events: none;
       }
 
       @keyframes rippleEffect {
         to {
-          transform: scale(4);
+          transform: scale(5);
           opacity: 0;
         }
       }
     </style>
   </head>
   <body>
+
+    <!-- Large SVG Decal Top Left -->
+    <svg class="decal decal-top-left" viewBox="0 0 100 100">
+      <circle cx="20" cy="20" r="40" />
+      <circle cx="80" cy="40" r="15" />
+      <polygon points="10,80 30,60 50,90" />
+    </svg>
+
+    <!-- Large SVG Decal Bottom Right -->
+    <svg class="decal decal-bottom-right" viewBox="0 0 100 100">
+      <circle cx="20" cy="20" r="40" />
+      <circle cx="80" cy="40" r="15" />
+      <polygon points="10,80 30,60 50,90" />
+    </svg>
 
     <div class="container">
       <header>
@@ -228,78 +256,60 @@
         <section class="card">
           <h2>🚀 Featured Projects</h2>
           <p>Check out the live build of my latest web application created in Code.org's App Lab:</p>
-          <a class="project-link" href="https://studio.code.org/projects/applab/8f30393c-f119-42e5-b990-203962c70665" target="_blank" rel="noopener noreferrer">
+          <a class="project-link" href="https://code.org" target="_blank" rel="noopener noreferrer">
             View App Lab Project <span>&rarr;</span>
           </a>
         </section>
       </main>
     </div>
 
-    <!-- JavaScript for Dynamic Audio Synthesis and Click Ripples -->
+    <!-- JavaScript for High-Volume Sound Synth & Visual Ripple Engine -->
     <script>
-      // Initialize Web Audio API context safely
       let audioCtx = null;
 
-      function playClickSound() {
+      function playLoudClickSound() {
         try {
           if (!audioCtx) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
           }
-          
-          // Resume if suspended (browser security policies)
           if (audioCtx.state === 'suspended') {
             audioCtx.resume();
           }
 
-          // Create synthesizer nodes
-          const osc = audioCtx.createOscillator();
-          const gain = audioCtx.createGain();
+          // Layer 1: Strong fundamental synth note
+          const osc1 = audioCtx.createOscillator();
+          const gain1 = audioCtx.createGain();
+          osc1.type = 'triangle'; 
+          osc1.frequency.setValueAtTime(440, audioCtx.currentTime); // A4 Note
+          osc1.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.12);
+          
+          // Boosted master gain value for higher volume output
+          gain1.gain.setValueAtTime(0.4, audioCtx.currentTime);
+          gain1.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.18);
+          
+          osc1.connect(gain1);
+          gain1.connect(audioCtx.destination);
 
-          osc.type = 'sine'; // Clean electronic chime sound
-          osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5 note
-          osc.frequency.exponentialRampToValueAtTime(880.00, audioCtx.currentTime + 0.1); // Slide up to A5
+          // Layer 2: Higher bright harmonic frequency overlay
+          const osc2 = audioCtx.createOscillator();
+          const gain2 = audioCtx.createGain();
+          osc2.type = 'sine';
+          osc2.frequency.setValueAtTime(880, audioCtx.currentTime); // Harmonic octave up
+          osc2.frequency.exponentialRampToValueAtTime(1760, audioCtx.currentTime + 0.08);
+          
+          gain2.gain.setValueAtTime(0.2, audioCtx.currentTime);
+          gain2.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
 
-          // Fade out quickly so it sounds like a snappy click response
-          gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+          osc2.connect(gain2);
+          gain2.connect(audioCtx.destination);
 
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
+          // Fire both oscillators simultaneously 
+          osc1.start();
+          osc2.start();
+          
+          osc1.stop(audioCtx.currentTime + 0.18);
+          osc2.stop(audioCtx.currentTime + 0.12);
 
-          osc.start();
-          osc.stop(audioCtx.currentTime + 0.15);
-        } catch (e) {
-          console.log("Audio not supported or blocked by browser settings.");
-        }
-      }
 
-      // Dynamic Ripple Animation and Sound Triggering logic
-      document.querySelectorAll('.project-link').forEach(button => {
-        button.addEventListener('click', function(e) {
-          // Play synth chime sound
-          playClickSound();
-
-          // Create visual ripple structure
-          const rect = this.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-
-          const ripple = document.createElement('span');
-          ripple.className = 'ripple';
-          ripple.style.left = `${x}px`;
-          ripple.style.top = `${y}px`;
-
-          this.appendChild(ripple);
-
-          // Clean up element after animation finishes
-          setTimeout(() => {
-            ripple.remove();
-          }, 500);
-        });
-      });
-    </script>
-
-  </body>
-</html>
 
 
